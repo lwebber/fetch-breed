@@ -18,9 +18,13 @@ function watchForms() {
     }
 
     function displayResult(responseJson) {
-        let txt = `<img src="${responseJson.message}" class="results-img">`;
-
-        $('.results-images').html(txt);
+        if (responseJson.code === 404) {
+            let txt = `<p>${responseJson.message}. Try again!</p>`;
+            $('.results-images').html(txt);
+        } else {
+            let txt = `<img src="${responseJson.message}" class="results-img">`;
+            $('.results-images').html(txt);
+        }
 
         //display the results section
         $('.results').removeClass('hidden');
